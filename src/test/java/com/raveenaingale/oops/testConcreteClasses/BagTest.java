@@ -22,5 +22,21 @@ public class BagTest {
         assertEquals(2, bag.size());
     }
 
+    @Test
+    public void testBagIterator(){
+        Bag<Integer> bag = new Bag<>();
+
+        bag.add(0);
+        bag.add(1);
+        bag.add(2);
+
+        Iterator itr = bag.iterator();
+
+        assertNotEquals(null, itr);
+        assertTrue(itr.hasNext());
+        assertEquals(2, itr.next());
+
+    }
+
 }
 

@@ -76,8 +76,55 @@ public class Bag<Item> implements Iterable<Item>{
         return size;
     }
 
+    /*
+    This function returns a new instance of LinkedIterator class
+    by calling its constructor
+     */
     @Override
     public Iterator<Item> iterator() {
-        return null;
+        return new LinkedIterator(first);
+    }
+
+    /*
+    LinkedIterator class implements Iterator interface.
+    And this class is used to iterate over the items in the Bag.
+    By implementing hasNext() and next() it achieves the iteration
+
+    To implement the logic it creates a reference to current Node.
+    In the beginning, current points to first Node from the Bag.
+     */
+    public class LinkedIterator implements Iterator<Item>{
+        private Node<Item> current;
+
+        public LinkedIterator(Node<Item> first){
+            current = first;
+        }
+        /*
+        Checks if current reference is null or not
+         */
+        @Override
+        public boolean hasNext() {
+            return current!=null;
+        }
+
+        /*
+        Returns the next element in the Bag(Iterable).
+        It implements by copying the current value
+        in a variable and then pointing the current
+        to next node.
+
+        Finally returns the copied variable's value.
+         */
+        @Override
+        public Item next() {
+            Item item = current.value;
+            current = current.next;
+            return item;
+        }
+
+        @Override
+        public void remove() {
+
+        }
     }
 }
