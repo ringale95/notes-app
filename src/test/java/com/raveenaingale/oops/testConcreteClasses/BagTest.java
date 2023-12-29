@@ -2,9 +2,10 @@ package com.raveenaingale.oops.testConcreteClasses;
 
 import com.raveenaingale.oops.concreteClasses.Bag;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Iterator;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BagTest {
 
@@ -23,20 +24,52 @@ public class BagTest {
     }
 
     @Test
-    public void testBagIterator(){
+    public void testBagAddDuplicate() {
         Bag<Integer> bag = new Bag<>();
 
-        bag.add(0);
-        bag.add(1);
-        bag.add(2);
+        bag.add(5);
+        bag.add(10);
+        bag.add(5);  // Adding a duplicate element
 
-        Iterator itr = bag.iterator();
+        assertEquals(3, bag.size());
+    }
 
-        assertNotEquals(null, itr);
-        assertTrue(itr.hasNext());
-        assertEquals(2, itr.next());
 
+    @Test
+    public void testBagIteratorEmptyBag() {
+        Bag<String> bag = new Bag<>();
+
+        Iterator<String> iterator = bag.iterator();
+
+        assertNotNull(iterator);
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    public void testBagIterator() {
+        Bag<Integer> bag = new Bag<>();
+
+        bag.add(5);
+        bag.add(10);
+        bag.add(15);
+
+        Iterator<Integer> iterator = bag.iterator();
+
+        assertNotNull(iterator);
+        assertTrue(iterator.hasNext());
+        assertEquals(15, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(10, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(5, iterator.next());
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    public void testBagAddNull() {
+        Bag<String> bag = new Bag<>();
+
+        assertThrows(IllegalArgumentException.class, () -> bag.add(null));
     }
 
 }
-

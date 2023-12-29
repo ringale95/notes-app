@@ -1,21 +1,35 @@
 package com.raveenaingale.oops.concreteClasses;
 
+
+
 import java.util.Iterator;
 
-public class Bag<Item> implements Iterable<Item>{
+public class Stack<Item> implements Iterable<Item>{
 
     /*
+    Stack is LIFO :
     Declare a reference to the first Node in the bag
-    Initially when the bag is empty the reference will be null
+    Initially when the stack is empty the reference will be null
      */
     private Node<Item> first;
 
     /*
-        A counter for holding number of Nodes in bag.
+        A counter for holding number of Nodes in stack.
         Initially as there are no Nodes, so the size is
         set to 0 by the constructor.
      */
     private int size;
+
+
+    public void clear() {
+        first = null;  // Set the reference to the first node to null
+        size = 0;
+    }
+
+    public Item peek() {
+        if( isEmpty() ) throw new IllegalStateException("Stack underflow");
+        return first.value;
+    }
 
     /*
     Create static nested Node class which helps us
@@ -41,7 +55,7 @@ public class Bag<Item> implements Iterable<Item>{
     As referenced above, constructor will initially
     set first as null and size as 0;
      */
-    public Bag(){
+    public Stack(){
         first = null;
         size = 0;
     }
@@ -58,11 +72,17 @@ public class Bag<Item> implements Iterable<Item>{
 
         Lastly it increments the counter by 1
      */
-    public void add(Item item){
-
-        if(item==null) throw new IllegalArgumentException("Added null!");
+    public void push(Item item){
+    /*
+    To push an item in the beggining of the list:
+    1. Take the reference of the first pointer into oldFirst.
+    2. Create a new node and re-initialize the first pointer
+    3. Insert the item into the created node
+    4. Let the next to point to the oldFirst
+     */
+        if(item==null) throw new IllegalArgumentException("Null Added!");
         Node<Item> oldFirst = first;
-        first = new Node<>();
+        first = new Node();
         first.value = item;
         first.next = oldFirst;
         size++;
@@ -71,6 +91,21 @@ public class Bag<Item> implements Iterable<Item>{
     // Check if it is empty or not
     public boolean isEmpty(){
         return first == null;
+    }
+
+
+    public Item pop() {
+        /*
+        Before removing an item, do the following:
+        1. Store the item to be removed in a variable
+        2. Let the pointer to point to the next
+        3. Return the item
+         */
+        if(isEmpty()) throw new IllegalStateException("Stack underflow!");
+        Item item = first.value;
+        first = first.next;
+        size--;
+        return item;
     }
 
     //Returns the size of the Bag
