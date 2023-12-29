@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container container-fluid">
-        <a class="navbar-brand nav-text" href="#" >N<strong style="color:white">O</strong>ops</a>
+        <a class="navbar-brand nav-text" href="#" ><strong style="color:red">N</strong>otes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -18,6 +18,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/data-structures">
                         <i class="bi-bell"></i> Data Structure
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/todos">
+                        <i class="bi-bell"></i> Todo
                     </a>
                 </li>
             </ul>
