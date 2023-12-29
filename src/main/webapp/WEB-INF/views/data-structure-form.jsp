@@ -27,7 +27,7 @@
                 <!-- Description Field (Textarea) -->
                 <div class="mb-3">
                     <label for="description" class="form-label">Notes:</label>
-                    <textarea class="form-control" id="notes" rows="3" name="notes" placeholder="Enter your Notes" required></textarea>
+                    <textarea class="form-control" id="notes" rows="10" name="notes" placeholder="Enter your Notes" required></textarea>
                 </div>
                 <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary">Submit</button>

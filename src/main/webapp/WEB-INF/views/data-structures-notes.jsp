@@ -18,19 +18,21 @@
 
 <body>
     <cm:header/>
-    <div class="container mt-5">
-        <h2>Data Structure Details</h2>
-
-        <div class="card">
+    <div class="container-md mt-5">
+        <div class="card border-0">
             <div class="card-body">
-                <h5 class="card-title">${structures.name}</h5>
                 <p class="card-text">
                     <c:out value="${structures.notes}" escapeXml="false" />
                 </p>
             </div>
         </div>
 
+        <!-- Edit Button -->
+        <a href="/data-structures/${structures.id}/edit" class="btn btn-warning mt-3">Edit</a>
+
+        <!-- Back to List Button -->
         <a href="/data-structures" class="btn btn-primary mt-3">Back to List</a>
+
     </div>
 
 </body>

@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container container-fluid">
-        <a class="navbar-brand nav-text" href="#" ><strong style="color:white">O</strong>ops</a>
+        <a class="navbar-brand nav-text" href="#" >N<strong style="color:white">O</strong>ops</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">

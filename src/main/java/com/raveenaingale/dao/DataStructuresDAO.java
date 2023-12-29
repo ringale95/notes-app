@@ -71,4 +71,33 @@ public class DataStructuresDAO extends DAO{
     public List search(Map<String, String> criteria) throws Exception {
         return null;
     }
+
+
+    public DataStructure update(DataStructure existingStructure) throws Exception {
+        try {
+            // Update user object in the database
+            begin();
+            getSession().update(existingStructure);
+            commit();
+            close();
+
+            return existingStructure;
+        } catch (HibernateException e) {
+            rollback();
+            throw new Exception("Exception while updating structure: " + e.getMessage());
+        }
+    }
+
+    public void delete(DataStructure existingStructure) throws Exception {
+        try {
+            // Delete user object from the database
+            begin();
+            getSession().delete(existingStructure);
+            commit();
+            close();
+        } catch (HibernateException e) {
+            rollback();
+            throw new Exception("Exception while deleting structure: " + e.getMessage());
+        }
+    }
 }

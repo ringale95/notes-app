@@ -51,4 +51,16 @@ public class StructuresController {
     public String createDS(){
      return "data-structure-form";
     }
+
+    @GetMapping("/{id}/edit")
+    public ModelAndView getDataStructuresByIdEdit(@PathVariable int id){
+        Map<String, DataStructure> model = new HashMap<>();
+        try {
+            model.put("structures", dataStructuresDAO.get(id));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return new ModelAndView("data-structure-form-edit", model);
+    }
+
 }
