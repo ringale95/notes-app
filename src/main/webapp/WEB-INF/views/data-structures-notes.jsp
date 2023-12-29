@@ -32,7 +32,10 @@
 
         <!-- Back to List Button -->
         <a href="/data-structures" class="btn btn-primary mt-3">Back to List</a>
-
+        
+        <!-- Export Button -->
+        <a href="/api/data-structures/${structures.id}/export" class="btn btn-secondary mt-3">Export</a>
+        
     </div>
 
 </body>
