@@ -24,7 +24,19 @@
         <h2>List of Data Structures</h2>
 
         <a href="/data-structures/new" class="btn btn-primary mb-3">Add Data Structures</a>
-
+        <!-- Import Button with file input -->
+        <form id="fileUploadForm" action="/api/data-structures/import" method="post" enctype="multipart/form-data"
+            style="display: none;">
+            <input type="file" id="fileInput" name="file" accept=".csv">
+            <button type="submit" class="btn btn-primary mb-3">Upload</button>
+        </form>
+        <button id="showFormButton" class="btn btn-secondary mb-3">Show Upload Form</button>
+		
+		<script>
+		    document.getElementById('showFormButton').addEventListener('click', function() {
+		        document.getElementById('fileUploadForm').style.display = 'block';
+		    });
+		</script>
         <table class="table">
             <thead>
                 <tr>
