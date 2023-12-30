@@ -16,7 +16,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>  
     <script src="https://unpkg.com/quill-better-table@1.2.10/dist/quill-better-table.js"></script>    
-    <script type="module" src="${pageContext.request.contextPath}/js/index.js"></script>
 </head>
 <body>
     <cm:header/>
@@ -34,7 +33,7 @@
             <!-- Notes Field (Textarea) -->
             <div class="mb-3">
                 <label for="notes" class="form-label">Notes:</label>
-				<div id="quill-editor" style="height: 300px;">${structures.notes}</div>
+				<div id="quill-editor" style="height: 60vh;">${structures.notes}</div>
                 <input type="hidden" id="hidden-notes" name="notes" />            
             </div>
 
@@ -45,23 +44,7 @@
             <a href="/data-structures/${structures.id}" class="btn btn-secondary">View Details</a>
         </form>
     </div>
-    <script>
-        var quill = new Quill('#quill-editor', {
-            theme: 'snow',
-            modules: {
-                toolbar: [
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{ 'code-block': true }], // This adds a button for code block
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    ['image'],
-                ],
-            },
-        });
-
-        // Update the hidden input with the HTML content when the form is submitted
-        document.getElementById('data-structure-form-edit').addEventListener('submit', function () {
-            document.getElementById('hidden-notes').value = quill.root.innerHTML;
-        });
-    </script>
+        <script type="module" src="${pageContext.request.contextPath}/js/index.js"></script>
+    
 </body>
 </html>
