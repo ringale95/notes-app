@@ -105,7 +105,7 @@ public class DataStructureAPIController {
 
             // Export logic - Convert existingStructure into a CSV and send it in the response
             response.setContentType("text/csv");
-            response.setHeader("Content-Disposition", "attachment; filename=data_structure_export.csv");
+            response.setHeader("Content-Disposition", "attachment; filename="+existingStructure.getName()+".csv");
 
             // You need to implement a CSV conversion logic here based on your DataStructure model
             String csvData = existingStructure.getId() + ";" +
