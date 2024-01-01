@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        MAVEN_HOME = tool 'Maven'
+        PATH = "$MAVEN_HOME/bin:$PATH"
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,8 +16,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo 'Building the project...'
-                    // Add build commands here (e.g., Maven, Gradle)
+                    echo 'Building the Maven project...'
+                    sh 'mvn clean install'
                 }
             }
         }
@@ -20,8 +25,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo 'Running tests...'
-                    // Add test commands here
+                    echo 'Running Maven tests...'
+                    sh 'mvn test'
                 }
             }
         }
