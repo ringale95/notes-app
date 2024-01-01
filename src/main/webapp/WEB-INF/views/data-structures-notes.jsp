@@ -5,6 +5,17 @@
 <html lang="en">
 
 <head>
+    <style>
+            .ql-syntax {
+                background-color: black;
+                color: white;
+                padding: 10px;
+                border-radius: 4px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                white-space: pre-wrap;
+            }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Notes</title>
@@ -14,6 +25,8 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 </head>
 
 <body>
@@ -22,7 +35,9 @@
         <div class="card border-0">
             <div class="card-body">
                 <p class="card-text">
-                    <c:out value="${structures.notes}" escapeXml="false" />
+                    <div id="quill-editor" style="height: 80vh;">
+                        <c:out value="${structures.notes}" escapeXml="false" />
+                    </div>
                 </p>
             </div>
         </div>
@@ -37,6 +52,15 @@
         <a href="/api/data-structures/${structures.id}/export" class="btn btn-secondary mt-3">Export</a>
         
     </div>
+
+    <!-- Initialize Quill on the specified element -->
+    <script>
+        var quill = new Quill('#quill-editor', {
+            theme: 'bubble',
+            readOnly: true,
+        });
+        quill.editor.disable();
+    </script>
 
 </body>
 

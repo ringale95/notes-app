@@ -34,7 +34,7 @@
             <!-- Notes Field (Textarea) -->
             <div class="mb-3">
                 <label for="notes" class="form-label">Notes:</label>
-				<div id="quill-editor" style="height: 300px;">${structures.notes}</div>
+				<div id="quill-editor" style="height: 60vh">${structures.notes}</div>
                 <input type="hidden" id="hidden-notes" name="notes" />            
             </div>
 
@@ -54,6 +54,7 @@
                     [{ 'code-block': true }], // This adds a button for code block
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
                     ['image'],
+                    ['link'],
                 ],
             },
         });
