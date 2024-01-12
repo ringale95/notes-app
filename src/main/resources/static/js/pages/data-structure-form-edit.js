@@ -3,7 +3,7 @@ import { makeRequest } from '../common/api.js';
 import { showToast } from "../common/toast.js";
 
 // Check if the current URL contains "/signup"
-if (window.location.pathname.includes('/data-structures/') && window.location.pathname.includes('/edit')) {
+if (window.location.pathname.includes('/notes/') && window.location.pathname.includes('/edit')) {
   // Use DOMContentLoaded directly in signup.js
   document.addEventListener('DOMContentLoaded', () => {
 

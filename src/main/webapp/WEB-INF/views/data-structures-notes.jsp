@@ -28,10 +28,10 @@
         </div>
 
         <!-- Edit Button -->
-        <a href="/data-structures/${structures.id}/edit" class="btn btn-warning mt-3">Edit</a>
+        <a href="/notes/${structures.id}/edit" class="btn btn-warning mt-3">Edit</a>
 
         <!-- Back to List Button -->
-        <a href="/data-structures" class="btn btn-primary mt-3">Back to List</a>
+        <a href="/notes" class="btn btn-primary mt-3">Back to List</a>
         
         <!-- Export Button -->
         <a href="/api/data-structures/${structures.id}/export" class="btn btn-secondary mt-3">Export</a>

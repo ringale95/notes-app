@@ -22,5 +22,6 @@
         <!-- Mention annotated class -->
         <mapping class="com.raveenaingale.models.Problem"/>
         <mapping class="com.raveenaingale.models.DataStructure"/>
+        <mapping class="com.raveenaingale.models.Application"/>
     </session-factory>
 </hibernate-configuration>

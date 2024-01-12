@@ -21,9 +21,14 @@
 <body>
     <cm:header/>
     <div class="container mt-5">
-        <h2>List of Data Structures</h2>
+        <h2>List of Notes</h2>
 
-        <a href="/data-structures/new" class="btn btn-primary mb-3">Add Data Structures</a>
+        <!-- Search Box -->
+        <div class="mb-3">
+            <input type="text" class="form-control" id="searchInput" placeholder="Enter name to search">
+        </div>
+
+        <a href="/notes/new" class="btn btn-primary mb-3">Add Note</a>
         <!-- Import Button with file input -->
         <form id="fileUploadForm" action="/api/data-structures/import" method="post" enctype="multipart/form-data"
             style="display: none;">
@@ -49,7 +54,7 @@
                 <c:forEach var="structure" items="${structures}">
                     <tr>
                         <td>${structure.id}</td>
-                        <td><a href="/data-structures/${structure.id}">${structure.name}</a></td>
+                        <td><a href="/notes/${structure.id}">${structure.name}</a></td>
                         <td>
                             <button type="submit" class="btn btn-danger" data-n-id="${structure.id}">Delete</button>
                         </td>

@@ -9,19 +9,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/notes")
-public class StructuresController {
+@RequestMapping("/cloud")
+public class CloudController {
 
     private final DataStructuresDAO dataStructuresDAO;
 
     @Autowired
-    public StructuresController(DataStructuresDAO dataStructuresDAO) {
+    public CloudController(DataStructuresDAO dataStructuresDAO) {
         this.dataStructuresDAO = dataStructuresDAO;
     }
     @GetMapping
@@ -29,7 +28,7 @@ public class StructuresController {
         Map<String, List<DataStructure>> model = new HashMap<>();
 
         try {
-            model.put("structures", dataStructuresDAO.list());
+            model.put("structures", dataStructuresDAO.getCloudNotes());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -49,7 +48,7 @@ public class StructuresController {
 
     @GetMapping("/new")
     public String createDS(){
-     return "data-structure-form";
+        return "data-structure-form";
     }
 
     @GetMapping("/{id}/edit")

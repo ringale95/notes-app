@@ -4,7 +4,7 @@ import { makeRequest } from "../common/api.js";
 import { showToast } from "../common/toast.js";
 
 // Check if the current URL contains "/notifications"
-if (window.location.pathname.includes('/data-structures')) {
+if (window.location.pathname.includes('/notes') || window.location.pathname.includes('/cloud') || window.location.pathname.includes('/web-tools')) {
   document.addEventListener('DOMContentLoaded', function () {
     registerDeleteButtonClick();
   });

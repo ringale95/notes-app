@@ -1,25 +1,25 @@
 package com.raveenaingale.dao;
 
+import com.raveenaingale.models.Application;
 import com.raveenaingale.models.DataStructure;
-import com.raveenaingale.models.Problem;
 import org.hibernate.HibernateException;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.crypto.Data;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
 @Repository
-public class DataStructuresDAO extends DAO{
+public class ApplicationsDAO extends DAO{
 
     @Override
     public List list() throws Exception {
         try {
             // Fetch all user objects from the database
             begin();
-            Query query = getSession().createQuery("from DataStructure");
-            List<DataStructure> structureList = query.list();
+            Query query = getSession().createQuery("from Application");
+            List<Application> structureList = query.list();
             commit();
             close();
 
@@ -31,7 +31,7 @@ public class DataStructuresDAO extends DAO{
         }
     }
 
-    public DataStructure create(DataStructure structure) throws Exception {
+    public Application create(Application structure) throws Exception {
         try {
 
             // save user object in the database
@@ -48,12 +48,12 @@ public class DataStructuresDAO extends DAO{
         }
     }
 
-    public DataStructure get(long id) throws Exception {
+    public Application get(long id) throws Exception {
 
         try {
             // Fetch user object from the database based on id
             begin();
-            DataStructure user = getSession().get(DataStructure.class, id);
+            Application user = getSession().get(Application.class, id);
             commit();
             close();
 
@@ -73,7 +73,7 @@ public class DataStructuresDAO extends DAO{
     }
 
 
-    public DataStructure update(DataStructure existingStructure) throws Exception {
+    public Application update(Application existingStructure) throws Exception {
         try {
             // Update user object in the database
             begin();
@@ -88,7 +88,7 @@ public class DataStructuresDAO extends DAO{
         }
     }
 
-    public void delete(DataStructure existingStructure) throws Exception {
+    public void delete(Application existingStructure) throws Exception {
         try {
             // Delete user object from the database
             begin();
@@ -101,54 +101,26 @@ public class DataStructuresDAO extends DAO{
         }
     }
 
-    public List<DataStructure> getWebToolsNotes() throws Exception {
+    public int getTodaysApplicationCount() throws Exception {
         try {
-            // Fetch all user objects from the database
             begin();
-            Query query = getSession().createQuery("FROM DataStructure WHERE name LIKE '%WebTools%'");
-            List<DataStructure> structureList = query.list();
+
+            // Construct the query to get the count of applications created today
+            Query<Long> query = getSession().createQuery(
+                    "select count(*) from Application where creationDate = :today", Long.class);
+            query.setParameter("today", LocalDate.now());
+
+            // Execute the query and get the count
+            long count = query.uniqueResult();
+
             commit();
             close();
 
-            return structureList;
+            return (int) count; // Convert the long count to int
         } catch (HibernateException e) {
             rollback();
-            // throw new AdException("Could not fetch user list", e);
-            throw new Exception("Exception while getting problem list: " + e.getMessage());
+            throw new Exception("Exception while getting today's application count: " + e.getMessage());
         }
     }
 
-    public List<DataStructure> getCloudNotes() throws Exception {
-        try {
-            // Fetch all user objects from the database
-            begin();
-            Query query = getSession().createQuery("FROM DataStructure WHERE name LIKE '%Cloud%'");
-            List<DataStructure> structureList = query.list();
-            commit();
-            close();
-
-            return structureList;
-        } catch (HibernateException e) {
-            rollback();
-            // throw new AdException("Could not fetch user list", e);
-            throw new Exception("Exception while getting problem list: " + e.getMessage());
-        }
-    }
-
-    public List<DataStructure> getAlgorithmNotes() throws Exception {
-        try {
-            // Fetch all user objects from the database
-            begin();
-            Query query = getSession().createQuery("FROM DataStructure WHERE name LIKE '%Algorithm%'");
-            List<DataStructure> structureList = query.list();
-            commit();
-            close();
-
-            return structureList;
-        } catch (HibernateException e) {
-            rollback();
-            // throw new AdException("Could not fetch user list", e);
-            throw new Exception("Exception while getting problem list: " + e.getMessage());
-        }
-    }
 }

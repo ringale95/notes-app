@@ -16,8 +16,28 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/data-structures">
-                        <i class="bi-bell"></i> Data Structure
+                    <a class="nav-link" href="/notes">
+                        <i class="bi-bell"></i> Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/web-tools">
+                        <i class="bi-bell"></i> Web Tools
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cloud">
+                        <i class="bi-bell"></i> Cloud
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/internship">
+                        <i class="bi-bell"></i> Internship
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/algorithm">
+                        <i class="bi-bell"></i> Algorithms
                     </a>
                 </li>
             </ul>
